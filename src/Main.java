@@ -9,7 +9,6 @@ class Player {
     boolean isLegitimate;
     String firstIllegalAction;
 
-    // No need for total bets probs.
     Player(String Id) {
         this.Id = Id;
         this.coinsBalance = 0;
@@ -18,11 +17,11 @@ class Player {
         this.isLegitimate = true;
     }
 
-    void deposit(long amount) {
+    void deposit(int amount) {
         this.coinsBalance += amount;
     }
 
-    boolean withdraw(long amount) {
+    boolean withdraw(int amount) {
         if (this.coinsBalance >= amount) {
             this.coinsBalance -= amount;
             return true;
@@ -31,7 +30,7 @@ class Player {
         }
     }
 
-    boolean placeBet(long amount) {
+    boolean placeBet(int amount) {
         if (this.coinsBalance >= amount) {
             this.coinsBalance -= amount;
             this.totalBets++;
@@ -41,7 +40,7 @@ class Player {
         }
     }
 
-    void winBet(long winnings) {
+    void winBet(int winnings) {
         this.coinsBalance += winnings;
         this.wonBets++;
     }
@@ -202,11 +201,11 @@ public class Main {
 
                 switch (playerAction) {
                     case "DEPOSIT":
-                        long depositAmount = Long.parseLong(parts[3]);
+                        int depositAmount = Integer.parseInt(parts[3]);
                         player.deposit(depositAmount);
                         break;
                     case "WITHDRAW":
-                        long withdrawAmount = Long.parseLong(parts[3]);
+                        int withdrawAmount = Integer.parseInt(parts[3]);
                         if (!player.withdraw(withdrawAmount)) {
                             player.setFirstIllegalAction("WITHDRAW null " + withdrawAmount + " null");
                         }
@@ -247,10 +246,10 @@ public class Main {
                 }
                 if (bet.getBetSide().equals(match.getResult())) {
                     int winnings = (int) (bet.getBetAmount() * rate);
-                    player.winBet(winnings + bet.getBetAmount());
+                    player.winBet((int) (winnings + bet.getBetAmount()));
                     casinoBalance -= winnings;
                 } else if (match.getResult().equals("DRAW")) {
-                    player.deposit(bet.getBetAmount());
+                    player.deposit((int) (bet.getBetAmount()));
                 } else {
                     casinoBalance += bet.getBetAmount();
                 }
