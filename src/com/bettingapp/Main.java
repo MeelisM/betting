@@ -16,7 +16,7 @@ public class Main {
     // Constants for input and output files.
     private static final String MATCH_DATA_FILE = "resource/match_data.txt";
     private static final String PLAYER_DATA_FILE = "resource/player_data.txt";
-    private static final String RESULTS_DATA_FILE = "src/com/bettingapp/results.txt";
+    private static final String RESULTS_DATA_FILE = "src/com/bettingapp/result.txt";
 
     Map<UUID, Match> matches = new HashMap<>();
     Map<UUID, Player> players = new HashMap<>();
