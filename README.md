@@ -6,8 +6,8 @@ Reads player and match data from `.txt` files. Calculates the betting results an
 
 1. Input files:
 
--   Match data should be provided in the `"data/match_data.txt"` file.
--   Player data should be provided in the `"data/player_data.txt"` file.
+-   Match data should be provided in the `"resource/match_data.txt"` file.
+-   Player data should be provided in the `"resource/player_data.txt"` file.
 
 2. Run the application:
 
